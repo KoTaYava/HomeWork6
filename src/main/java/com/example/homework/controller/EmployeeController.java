@@ -1,6 +1,7 @@
 package com.example.homework.controller;
 
 import com.example.homework.demo.Employee;
+import com.example.homework.service.EmployeeServiceImpl;
 import com.example.homework.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +12,12 @@ import java.util.List;
 
 @RestController
 
-@RequestMapping(path = "/employees")
+@RequestMapping("/emploee")
 
 public class EmployeeController {
 
 
-    private  final EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
 
     public EmployeeController(EmployeeService employeeService) {
@@ -24,28 +25,28 @@ public class EmployeeController {
     }
 
 
-    @GetMapping(path = "/add")
+    @GetMapping("/add")
 
-    public Employee addEmployee (
+    public Employee addEmployee(
 
-            @RequestParam (value = "name") String name,
+            @RequestParam(value = "name") String name,
 
-            @RequestParam (value = "lasName") String lastName
+            @RequestParam(value = "lasName") String lastName
 
     ) {
 
-        return   employeeService.addEmployee(name,lastName);
+        return employeeService.addEmployee(name, lastName);
 
     }
 
 
-    @GetMapping(path = "/remove")
+    @GetMapping("/remove")
 
     public Employee removeEmployee(
 
-            @RequestParam (value = "name") String name,
+            @RequestParam(value = "name") String name,
 
-            @RequestParam (value = "lastName") String lastName
+            @RequestParam(value = "lastName") String lastName
 
     ) {
 
@@ -54,13 +55,13 @@ public class EmployeeController {
     }
 
 
-    @GetMapping(path = "/find")
+    @GetMapping("/find")
 
     public Employee findEmployee(
 
-            @RequestParam (value = "name") String name,
+            @RequestParam(value = "name") String name,
 
-            @RequestParam (value = "lastName") String lastName
+            @RequestParam(value = "lastName") String lastName
 
     ) {
 
@@ -69,12 +70,10 @@ public class EmployeeController {
     }
 
 
+    @GetMapping("/allEmployees")
 
 
-    @GetMapping(path = "/allEmployees")
-
-
-    public List <Employee>  getAllEmployees() {
+    public List<Employee> getAllEmployees() {
 
 
         return employeeService.getAllEmployees();
